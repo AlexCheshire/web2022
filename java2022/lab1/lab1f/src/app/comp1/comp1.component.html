@@ -1,0 +1,12 @@
+<div class="gr">
+<div class="water" (click)="getPaint()"><img src="assets/watercolor.jpg"></div>
+
+
+
+<div *ngFor="let a of paintList">
+    <h2>Name: {{a.title}}</h2>
+    <h3>Type: {{a.type}}<br>
+    Price: {{a.price}}</h3>
+    <h3>cat?: {{a.cat}}</h3>
+</div>
+</div>

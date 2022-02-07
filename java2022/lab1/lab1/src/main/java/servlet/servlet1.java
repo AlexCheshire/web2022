@@ -31,7 +31,7 @@ public class servlet1 extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
-		paint paint1 = new paint("Paint1", 650.50f, 1, "watercolor");
+		paint paint1 = new paint("White Nights", 650.50f, 1, "watercolor");
 		out.println("["+paint1+"]");
 	}
 
