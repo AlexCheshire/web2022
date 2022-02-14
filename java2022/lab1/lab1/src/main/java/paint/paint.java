@@ -3,14 +3,14 @@ package paint;
 public class paint {
 	private String title;
 	private float price;
-	private int cat;
 	private String type;
-	public paint(String title, float price, int cat, String type) {
+	private int cat;
+	public paint(String title, float price, String type, int cat) {
 		super();
 		this.title = title;
 		this.price = price;
-		this.cat = cat;
 		this.type = type;
+		this.cat = cat;
 	}
 	public String getTitle() {
 		return title;
@@ -24,21 +24,22 @@ public class paint {
 	public void setPrice(float price) {
 		this.price = price;
 	}
-	public int getCat() {
-		return cat;
-	}
-	public void setCat(int cat) {
-		this.cat = cat;
-	}
 	public String getType() {
 		return type;
 	}
 	public void setType(String type) {
 		this.type = type;
 	}
+	public int getCat() {
+		return cat;
+	}
+	public void setCat(int cat) {
+		this.cat = cat;
+	}
 	@Override
 	public String toString() {
-		return "{\"title\": \""+title+"\", \"type\": \""+type+"\", \"price\": "+price+", \"cat\" :"+cat+"}";
+		return "{\"title\": \""+ title + "\", \"price\":" + price + ", \"type\":" + type + ", \"cat\":" + cat+"}";
 	}
+	
 	
 }
