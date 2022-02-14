@@ -38,7 +38,7 @@ public class paint {
 	}
 	@Override
 	public String toString() {
-		return "{\"title\": \""+ title + "\", \"price\":" + price + ", \"type\":" + type + ", \"cat\":" + cat+"}";
+		  return "{\"title\": \""+title+"\",\"price\": "+price+", \"type\": \""+type+"\",\"cat\": "+cat+"}";
 	}
 	
 	

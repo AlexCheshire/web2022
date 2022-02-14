@@ -1,6 +1,6 @@
 export interface Int1 {
     title:string;
-    type:string;
     price:number;
+    type:string;
     cat:number;
 }

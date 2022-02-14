@@ -31,8 +31,8 @@ public class Servlet1 extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
-		paint paints = new paint("White Nights", 650.5f, "watercolor", 1);
-		out.println("["+paints+"]");
+		paint paint = new paint("White Nights", 650.5f, "watercolor", 1);
+		out.println("["+paint+"]");
 	}
 
 	/**
