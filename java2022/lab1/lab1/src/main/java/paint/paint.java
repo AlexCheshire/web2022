@@ -1,6 +1,14 @@
 package paint;
 
-public class paint {
+import java.io.Serializable;
+
+public class paint implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	
 	private String title;
 	private float price;
 	private String type;

@@ -12,6 +12,8 @@ export class Comp1Component implements OnInit {
   paintList:Int1[]=[];
   constructor(private service:Serv1Service) { }
 
+
+
   getPaint():void{
     this.service.getPaint().subscribe(
       (paint)=>{
@@ -19,6 +21,8 @@ export class Comp1Component implements OnInit {
       }
     )
   }
+
+  
 
   ngOnInit(): void {
   }
