@@ -1,6 +1,5 @@
 <div class="gr">
-<div class="water" (click)="getPaint()"><img src="assets/watercolor.jpg"></div>
-
+<div class="btn" (click)="getPaint()">Paint! From Server!</div>
 
 
 <div *ngFor="let a of paintList">
@@ -11,3 +10,13 @@
 </div>
 </div>
 <a href="./Servlet1">Servlet</a>
+<div class="gr2">
+    <div class="add">
+        <div class="addbtn">Add Paint!</div>
+        <div class="add-hidden" id="add-hidden"><app-add></app-add></div>
+    </div>
+    <div class="remove">
+        <div class="rmbtn">Remove Paint!</div>
+        <div class="rm-hidden" id="rm-hidden"><app-rm></app-rm></div>
+    </div>
+</div>

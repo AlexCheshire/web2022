@@ -18,6 +18,7 @@ export class Comp1Component implements OnInit {
     this.service.getPaint().subscribe(
       (paint)=>{
         this.paintList=paint;
+        this.service.setList(paint);
       }
     )
   }
@@ -25,6 +26,20 @@ export class Comp1Component implements OnInit {
   
 
   ngOnInit(): void {
+    
+    let add = document.getElementsByClassName("addbtn");
+    let addform = document.getElementById("add-hidden");
+    let rm = document.getElementsByClassName("rmbtn");
+    let rmform = document.getElementById("rm-hidden");
+    
+
+    add[0].addEventListener("click", () => {
+        addform!.style.display = "block";
+      });
+      
+    rm[0].addEventListener("click", () => {
+        rmform!.style.display = "block";
+    });
   }
 
 }

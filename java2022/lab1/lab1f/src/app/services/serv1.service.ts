@@ -10,6 +10,7 @@ export class Serv1Service {
 
   list = new BehaviorSubject<Int1[]>([]);
   url:string="http://localhost:8080/lab1/Servlet1";
+
   constructor(private http:HttpClient) { }
 
   getPaint():Observable<Int1[]>{
@@ -19,9 +20,12 @@ export class Serv1Service {
     return this.http.post<Int1[]>(this.url, paint)
   }
   putPaint(paint:Int1):Observable<Int1[]>{
-    return this.http.put<Int1[]>(this.url+"/"+paint.title,paint)
+    return this.http.put<Int1[]>(this.url+"/"+paint.title, paint)
   }
   deletePaint(paint:Int1):Observable<Int1[]>{
     return this.http.delete<Int1[]>(this.url+"/"+paint.title)
+  }
+  setList(list:Int1[]){
+    this.list.next(list);
   }
 }

@@ -1,7 +1,9 @@
-<div class="addform">
-    <input type="text" placeholder="Name of the Paint" id="title" [(ngModel)]="paint!.title">
-    <input type="text" placeholder="Type of the Paint" id="type" [(ngModel)]="paint!.type">
-    <input type="number" min="1" max="5000" placeholder="Price of the Paint" id="price" [(ngModel)]="paint!.price">
-    <input type="number" min="1" max="5" placeholder="Cat?" id="cat" [(ngModel)]="paint!.cat">
-    <button (click)="addPaint()">Add Paint!</button>
+<div >
+    <form #form1="ngForm" (ngSubmit)="addPaint(form1.value)" class="addform">
+    <input type="text" placeholder="Name of the Paint" name="title" ngModel>
+    <input type="text" placeholder="Type of the Paint" name="type" ngModel>
+    <input type="number" min="1" max="5000" placeholder="Price of the Paint" name="price" ngModel>
+    <input type="number" min="1" max="5" placeholder="Cat?" name="cat" ngModel>
+    <input type="submit" class="addbutton" value="Add Paint!">
+    </form>
 </div>

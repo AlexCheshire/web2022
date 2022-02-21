@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { Int1 } from '../interfaces/int1';
 import { Serv1Service } from '../services/serv1.service';
-import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-rm',
@@ -12,8 +11,7 @@ export class RmComponent implements OnInit {
 
 
   
-  @Input() paint?:Int1
-  @Output() updated:EventEmitter<null> = new EventEmitter();
+
   paintList:Int1[]=[];
   constructor(private service:Serv1Service) { }
 
@@ -23,6 +21,7 @@ export class RmComponent implements OnInit {
     this.service.getPaint().subscribe(
       (paint)=>{
         this.paintList=paint;
+        this.service.setList(paint);
       }
     )
   }
@@ -30,16 +29,15 @@ export class RmComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.getPaint();
   }
   
-  removePaint(){
-    if(this.paint){
-      this.service.deletePaint(this.paint).subscribe(
-        ()=>{
-          this.updated.emit();
-        }
-      )
-    }
+  removePaint(paint:Int1){
+    this.service.deletePaint(paint).subscribe(
+      ()=>{
+        this.getPaint();
+      }
+    )
   }
   
 

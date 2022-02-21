@@ -15,12 +15,13 @@ import crud.Lab2CrudInterface;
 /**
  * Servlet implementation class Servlet1
  */
-@WebServlet("/Servlet1")
+@WebServlet("/Servlet1/*")
 public class Servlet1 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	ServletConfigInterface servletConfig;
 	Lab2CrudInterface lab2Crud;
+	
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -35,11 +36,21 @@ public class Servlet1 extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
 		out.println("["+lab2Crud.readPaint()+"]");
 	}
 
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
+	 */
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String title = request.getParameter("title");
@@ -48,6 +59,13 @@ public class Servlet1 extends HttpServlet {
 		int cat = Integer.parseInt(request.getParameter("cat"));
 		
 		lab2Crud.updatePaint(new paint(title,price,type,cat));
+	}
+
+	/**
+	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
+	 */
+	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 	}
 
 }

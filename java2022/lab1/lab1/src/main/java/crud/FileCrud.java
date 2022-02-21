@@ -1,7 +1,7 @@
 package crud;
 
-import files.FileIO;
-import files.FileIOInterface;
+import fileIO.FileIO;
+import fileIO.FileIOInterface;
 import paint.paint;
 
 public class FileCrud implements Lab2CrudInterface {
@@ -11,11 +11,9 @@ public class FileCrud implements Lab2CrudInterface {
 	public FileCrud() {
 		this.fio = new FileIO();
 	}
-	
 
 	@Override
 	public paint readPaint() {
-		
 		return (paint)fio.loadFromFile();
 	}
 
