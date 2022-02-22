@@ -14,7 +14,7 @@ export class AddComponent implements OnInit {
   // @Output() updated:EventEmitter<null> = new EventEmitter();
   constructor(private service:Serv1Service) { }
   paintList:Int1[]=[];
-  paint:Int1 = {"title":"", "price":0, "type":"","cat":0};
+  //paint:Int1 = {"title":"", "price":0, "type":"","cat":0};
 
   ngOnInit(): void {
     // let bt = document.getElementsByClassName("addbutton")[0];
@@ -40,7 +40,6 @@ export class AddComponent implements OnInit {
   addPaint(paint:Int1){
     this.service.postPaint(paint).subscribe(
       ()=>{
-        console.log(this.paint);
         this.getPaint();
       }
     )

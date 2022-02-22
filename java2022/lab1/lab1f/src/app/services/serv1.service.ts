@@ -20,10 +20,10 @@ export class Serv1Service {
     return this.http.post<Int1[]>(this.url, paint)
   }
   putPaint(paint:Int1):Observable<Int1[]>{
-    return this.http.put<Int1[]>(this.url+"/"+paint.title, paint)
+    return this.http.put<Int1[]>(this.url+"/"+paint.cat, paint)
   }
   deletePaint(paint:Int1):Observable<Int1[]>{
-    return this.http.delete<Int1[]>(this.url+"/"+paint.title)
+    return this.http.delete<Int1[]>(this.url+"/"+paint.cat)
   }
   setList(list:Int1[]){
     this.list.next(list);
