@@ -26,6 +26,7 @@ export class Comp1Component implements OnInit {
   
 
   ngOnInit(): void {
+    
     this.getPaint();
     
     let add = document.getElementsByClassName("addbtn");
