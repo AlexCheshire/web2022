@@ -1,10 +1,10 @@
 <div class="gr">
 
-
-<div *ngFor="let a of paintList">
-    <h2>{{a.title}}</h2>
-    <h3>{{a.type}}<br>
-    {{a.price}} UAH</h3>
+<img src="assets/watercolor.jpg" (click)="getPaint()">
+<div class="one" *ngFor="let a of paintList">
+    <h1>{{a.title}}</h1>
+    <h2>{{a.type}}</h2>
+    <h2>{{a.price}} UAH</h2>
 </div>
 </div>
 <a href="./Servlet1">Servlet</a>

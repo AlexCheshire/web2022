@@ -35,11 +35,21 @@ export class Comp1Component implements OnInit {
     
 
     add[0].addEventListener("click", () => {
+      if(addform!.style.display == "block"){
+        addform!.style.display = "none";
+      }
+      else{
         addform!.style.display = "block";
-      });
+      }
+    });
       
     rm[0].addEventListener("click", () => {
+      if(rmform!.style.display == "block"){
+        rmform!.style.display = "none";
+      }
+      else{
         rmform!.style.display = "block";
+      }
     });
   }
 

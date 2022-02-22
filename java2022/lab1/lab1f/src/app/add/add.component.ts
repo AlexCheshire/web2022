@@ -9,11 +9,11 @@ import { Serv1Service } from '../services/serv1.service';
 })
 export class AddComponent implements OnInit {
 
-  
+  paintList:Int1[]=[];
   //@Input() paint?:Int1
   // @Output() updated:EventEmitter<null> = new EventEmitter();
   constructor(private service:Serv1Service) { }
-  paintList:Int1[]=[];
+  
   //paint:Int1 = {"title":"", "price":0, "type":"","cat":0};
 
   ngOnInit(): void {
