@@ -1,18 +1,18 @@
 package servlet;
 
+import java.io.IOException;
+import java.sql.SQLException;
+
+import jakarta.servlet.Servlet;
+import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import paint.Mock;
+import jdbc.Connect;
+import jdbc.SqlCRUD;
 import paint.paint;
-
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
-
-import crud.Lab2CrudInterface;
 
 /**
  * Servlet implementation class Servlet1
@@ -20,20 +20,35 @@ import crud.Lab2CrudInterface;
 @WebServlet("/Servlet1/*")
 public class Servlet1 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private List<paint> lp = new Mock().getPaintList();
 	
-	ServletConfigInterface servletConfig;
-	Lab2CrudInterface lab2Crud;
+	LabCRUDInterface<paint> crud = new SqlCRUD();
 	
+		
+
+	public void init(ServletConfig config) throws ServletException {
+		// TODO Auto-generated method stub	
+		
+		crud = new SqlCRUD();
+		
+	}
+
+	/**
+	 * @see Servlet#destroy()
+	 */
+	public void destroy() {
+		// TODO Auto-generated method stub
+		try {
+			((SqlCRUD) crud).getConnection().close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Servlet1() {
-        super();
-        this.servletConfig = new ServletConfig();
-        this.lab2Crud = servletConfig.getCrud();
-    }
+   
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -42,9 +57,8 @@ public class Servlet1 extends HttpServlet {
 		
 		setAccessControlHeaders(response);
 		response.setContentType("application/json");
-		response.getWriter().println(lp);
-		//PrintWriter out = response.getWriter();
-		//out.println("["+lab2Crud.readPaint()+"]");
+//		System.out.println(((SqlCRUD) crud).getConnection());
+		response.getWriter().println(crud.read());
 	}
 
 	/**
@@ -53,60 +67,50 @@ public class Servlet1 extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		setAccessControlHeaders(response);
 		paint paint = Helpers.paintParse(request);
-		paint.setCat(Helpers.getNextCat(lp));
-		lp.add(paint);
+		crud.create(paint);
 		doGet(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
 	 */
+	
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-//		String title = request.getParameter("title");
-//		float price = Float.parseFloat(request.getParameter("price"));
-//		String type = request.getParameter("type");
-//		int cat = Integer.parseInt(request.getParameter("cat"));
-//		
-//		lab2Crud.updatePaint(new paint(title,price,type,cat));
-		
 		setAccessControlHeaders(response);
 		paint paint = Helpers.paintParse(request);
 		int cat = Integer.parseInt(request.getPathInfo().substring(1));
-		System.out.println(cat);
 		response.setContentType("application/json");
-		int index = Helpers.getIndexByPaintCat(cat, lp);
-		lp.set(index,paint);
+		crud.update(cat, paint);
 		doGet(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
 	 */
+	
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		setAccessControlHeaders(response);
 		int cat = Integer.parseInt(request.getPathInfo().substring(1));
-		System.out.println(cat);
+		
 		response.setContentType("application/json");
-		int index = Helpers.getIndexByPaintCat(cat, lp);
-		lp.remove(index);
+		crud.delete(cat);
 		doGet(request, response);
 	}
+
+	/**
+	 * @see HttpServlet#doOptions(HttpServletRequest, HttpServletResponse)
+	 */
 	
 	protected void doOptions(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		// TODO Auto-generated method stub
 		setAccessControlHeaders(response);
 		response.setStatus(HttpServletResponse.SC_OK);
 		
 	}
 	
-	private void setAccessControlHeaders(HttpServletResponse resp) {
-		
-		resp.setHeader("Access-Control-Allow-Origin", "*");
-		resp.setHeader("Access-Control-Allow-Methods", "*");
-		resp.setHeader("Access-Control-Allow-Headers", "*");
-	}
-
-
-}
-
+	 private void setAccessControlHeaders(HttpServletResponse resp) {
+		  resp.setHeader("Access-Control-Allow-Origin", "*");
+	      resp.setHeader("Access-Control-Allow-Methods", "*");
+	      resp.setHeader("Access-Control-Allow-Headers", "*");
+	  }
+	 }
