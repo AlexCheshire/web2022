@@ -9,6 +9,7 @@ import { AddComponent } from './add/add.component';
 import { RmComponent } from './rm/rm.component';
 import { FormsModule } from '@angular/forms';
 import { Comp2Component } from './comp2/comp2.component';
+import { UpdComponent } from './upd/upd.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { Comp2Component } from './comp2/comp2.component';
     AddComponent,
     RmComponent,
     Comp2Component,
+    UpdComponent,
   ],
   imports: [
     BrowserModule,

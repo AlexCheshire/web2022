@@ -3,19 +3,17 @@ import { Int1 } from '../interfaces/int1';
 import { Serv1Service } from '../services/serv1.service';
 
 @Component({
-  selector: 'app-add',
-  templateUrl: './add.component.html',
-  styleUrls: ['./add.component.scss']
+  selector: 'app-upd',
+  templateUrl: './upd.component.html',
+  styleUrls: ['./upd.component.scss']
 })
-export class AddComponent implements OnInit {
+export class UpdComponent implements OnInit {
 
+  
   paintList:Int1[]=[];
   constructor(private service:Serv1Service) { }
-  
-  ngOnInit(): void {
-   
-    
-  }
+
+
 
   getPaint():void{
     this.service.getPaint().subscribe(
@@ -25,13 +23,20 @@ export class AddComponent implements OnInit {
       }
     )
   }
+  
 
-  addPaint(paint:Int1){
-    this.service.postPaint(paint).subscribe(
+
+  ngOnInit(): void {
+    this.getPaint();
+  }
+  
+  updatePaint(paint:Int1){
+    this.service.putPaint(paint).subscribe(
       ()=>{
         this.getPaint();
       }
     )
   }
+  
 
 }
