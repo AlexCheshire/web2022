@@ -1,18 +1,21 @@
-package paint;
+package lab5.paint;
 
 import java.io.Serializable;
 
-public class Paint implements Serializable{
-	
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private int cat;
-	private String title;
-	private float price;
-	private String type;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="paint1")
+public class Paint {
+	@Id
+	@GeneratedValue
+	int cat;
+	String title;
+	float price;
+	String type;
 	
 	
 	
