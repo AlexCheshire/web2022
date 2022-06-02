@@ -1,5 +1,5 @@
 <div class="updform" *ngFor="let a of paintList">
-    <div class="double"><h3>{{a.title}}</h3><button class="selectbutton" (click)="onSelect(a)">Select Paint!</button></div>
+    <div class="double"><h3>{{a.title}}</h3><button class="selectbutton" (click)="onSelect(a)">Select!</button></div>
 </div>
 <div *ngIf="selectedItem">
 <form #form2="ngForm" (ngSubmit)="updateRest(form2.value)" class="updform">
