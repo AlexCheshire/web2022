@@ -1,6 +1,8 @@
 package lab5.paint;
 
 import java.io.Serializable;
+import java.util.Iterator;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -55,7 +57,6 @@ public class Paint {
 	public void setType(String type) {
 		this.type = type;
 	}
-	
 
 	@Override
 	public String toString() {

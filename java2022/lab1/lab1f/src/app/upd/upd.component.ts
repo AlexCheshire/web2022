@@ -11,29 +11,32 @@ export class UpdComponent implements OnInit {
 
   
   paintList:Int1[]=[];
+  selectedItem?:Int1;
   constructor(private service:Serv1Service) { }
 
 
 
-  getPaint():void{
-    this.service.getPaint().subscribe(
-      (paint)=>{
-        this.paintList=paint;
-        this.service.setList(paint);
+  getRest():void{
+    this.service.getRest().subscribe(
+      (rest1)=>{
+        this.paintList=rest1._embedded.paints;
       }
     )
   }
   
+  onSelect(paint:Int1){
+    this.selectedItem=paint;
+  }
 
 
   ngOnInit(): void {
-    this.getPaint();
+    this.getRest();
   }
   
-  updatePaint(paint:Int1){
-    this.service.putPaint(paint).subscribe(
+  updateRest(paint:Int1){
+    this.service.putRest(paint).subscribe(
       ()=>{
-        this.getPaint();
+        this.getRest();
       }
     )
   }

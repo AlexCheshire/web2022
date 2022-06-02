@@ -17,19 +17,18 @@ export class AddComponent implements OnInit {
     
   }
 
-  getPaint():void{
-    this.service.getPaint().subscribe(
-      (paint)=>{
-        this.paintList=paint;
-        this.service.setList(paint);
+  getRest():void{
+    this.service.getRest().subscribe(
+      (rest1)=>{
+        this.paintList=rest1._embedded.paints;
       }
     )
   }
 
-  addPaint(paint:Int1){
-    this.service.postPaint(paint).subscribe(
+  addRest(paint:Int1){
+    this.service.postRest(paint).subscribe(
       ()=>{
-        this.getPaint();
+        this.getRest();
       }
     )
   }

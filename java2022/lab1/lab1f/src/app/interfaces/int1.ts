@@ -2,5 +2,12 @@ export interface Int1 {
     title:string;
     price:number;
     type:string;
-    cat:number;
+    _links:{
+        self: {
+        href: string;
+        },
+        paint: {
+        href: string;
+        }
+    }
 }

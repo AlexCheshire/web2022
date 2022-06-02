@@ -1,26 +1,27 @@
 <div class="line"></div>
 <div class="gr">
 
-<img src="assets/watercolor.jpg" (click)="getPaint()">
+<img src="assets/watercolor.jpg" (click)="getRest()">
 <div class="one" *ngFor="let a of paintList">
     <h1>{{a.title}}</h1>
     <h2>{{a.type}}</h2>
     <h2>{{a.price}} UAH</h2>
+    <!-- <h2>{{a._links.self.href}}</h2> -->
 </div>
 </div>
-<a href="./Servlet1">Servlet</a>
+<a href="http://localhost:1156/paints">Servlet</a>
 <div class="line"></div>
 <div class="gr2">
     <div class="add">
-        <div class="addbtn" (click)="getPaint()">Add Paint!</div>
+        <div class="addbtn" (click)="getRest()">Add Paint!</div>
         <div class="add-hidden" id="add-hidden"><app-add></app-add></div>
     </div>
     <div class="update">
-        <div class="updbtn" (click)="getPaint()">Update Paint!</div>
+        <div class="updbtn" (click)="getRest()">Update Paint!</div>
         <div class="upd-hidden" id="upd-hidden"><app-upd></app-upd></div>
     </div>
     <div class="remove">
-        <div class="rmbtn" (click)="getPaint()">Remove Paint!</div>
+        <div class="rmbtn" (click)="getRest()">Remove Paint!</div>
         <div class="rm-hidden" id="rm-hidden"><app-rm></app-rm></div>
     </div>
 </div>

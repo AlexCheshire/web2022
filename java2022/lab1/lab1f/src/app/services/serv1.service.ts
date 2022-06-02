@@ -2,30 +2,36 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Int1 } from '../interfaces/int1';
+import { Rest1 } from '../interfaces/rest1';
+
 
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class Serv1Service {
 
-  list = new BehaviorSubject<Int1[]>([]);
-  url:string="http://localhost:8080/lab1/Servlet1";
+
+  url:string="http://localhost:1156/paints";
+
 
   constructor(private http:HttpClient) { }
 
-  getPaint():Observable<Int1[]>{
-    return this.http.get<Int1[]>(this.url)
+
+  getRest():Observable<Rest1>{
+    return this.http.get<Rest1>(this.url);
   }
-  postPaint(paint:Int1):Observable<Int1[]>{
+
+  postRest(paint:Int1):Observable<Int1[]>{
     return this.http.post<Int1[]>(this.url, paint)
   }
-  putPaint(paint:Int1):Observable<Int1[]>{
-    return this.http.put<Int1[]>(this.url+"/"+paint.cat, paint)
+
+  putRest(paint:Int1):Observable<Int1[]>{
+    return this.http.put<Int1[]>(paint._links.self.href, paint)
   }
-  deletePaint(paint:Int1):Observable<Int1[]>{
-    return this.http.delete<Int1[]>(this.url+"/"+paint.cat)
-  }
-  setList(list:Int1[]){
-    this.list.next(list);
+  
+  deleteRest(paint:Int1):Observable<Int1[]>{
+    return this.http.delete<Int1[]>(paint._links.self.href)
   }
 }

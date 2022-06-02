@@ -14,11 +14,10 @@ export class Comp1Component implements OnInit {
 
 
 
-  getPaint():void{
-    this.service.getPaint().subscribe(
-      (paint)=>{
-        this.paintList=paint;
-        this.service.setList(paint);
+  getRest():void{
+    this.service.getRest().subscribe(
+      (rest1)=>{
+        this.paintList=rest1._embedded.paints;
       }
     )
   }
@@ -27,7 +26,7 @@ export class Comp1Component implements OnInit {
 
   ngOnInit(): void {
     
-    this.getPaint();
+    this.getRest();
     
     let add = document.getElementsByClassName("addbtn");
     let addform = document.getElementById("add-hidden");

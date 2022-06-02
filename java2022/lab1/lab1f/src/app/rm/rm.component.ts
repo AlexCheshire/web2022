@@ -17,11 +17,10 @@ export class RmComponent implements OnInit {
 
 
 
-  getPaint():void{
-    this.service.getPaint().subscribe(
-      (paint)=>{
-        this.paintList=paint;
-        this.service.setList(paint);
+  getRest():void{
+    this.service.getRest().subscribe(
+      (rest1)=>{
+        this.paintList=rest1._embedded.paints;
       }
     )
   }
@@ -29,13 +28,13 @@ export class RmComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.getPaint();
+    this.getRest();
   }
   
-  removePaint(paint:Int1){
-    this.service.deletePaint(paint).subscribe(
+  removeRest(paint:Int1){
+    this.service.deleteRest(paint).subscribe(
       ()=>{
-        this.getPaint();
+        this.getRest();
       }
     )
   }
