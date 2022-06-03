@@ -3,7 +3,6 @@
 </div>
 <div *ngIf="selectedItem">
 <form #form2="ngForm" (ngSubmit)="updateRest(form2.value)" class="updform">
-    <!-- <input type="hidden" value="selectedItem._links.self.href" name="_links.self.href" ngModel="{{selectedItem._links.self.href}}"> -->
     <input type="text" placeholder="Name of the Paint" name="title" ngModel="{{selectedItem.title}}">
     <input type="text" placeholder="Type of the Paint" name="type" ngModel="{{selectedItem.type}}">
     <input type="number" min="1" max="5000" placeholder="Price of the Paint" name="price" ngModel="{{selectedItem.price}}">
