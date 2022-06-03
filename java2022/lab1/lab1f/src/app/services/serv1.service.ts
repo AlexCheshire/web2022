@@ -27,8 +27,8 @@ export class Serv1Service {
     return this.http.post<Int1>(this.url, paint)
   }
 
-  putRest(paint:Int1):Observable<Int1>{
-    return this.http.put<Int1>(paint._links.self.href, paint)
+  putRest(link:string, paint:Int1):Observable<Int1>{
+    return this.http.put<Int1>(link, paint)
   }
   
   deleteRest(paint:Int1):Observable<Int1>{

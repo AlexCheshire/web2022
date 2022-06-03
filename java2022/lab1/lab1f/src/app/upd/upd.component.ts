@@ -34,7 +34,7 @@ export class UpdComponent implements OnInit {
   }
   
   updateRest(paint:Int1){
-    this.service.putRest(paint).subscribe(
+    this.service.putRest(this.selectedItem!._links.self.href, paint).subscribe(
       ()=>{
         this.getRest();
       }
